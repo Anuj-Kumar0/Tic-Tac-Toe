@@ -7,15 +7,23 @@ let boxSix = document.querySelector(".six");
 let boxSeven = document.querySelector(".seven");
 let boxEight = document.querySelector(".eight");
 let boxNine = document.querySelector(".nine");
+let boxes = document.querySelectorAll(".boxes");
+const playerChance = document.querySelector("#player-turn");
+const result = document.querySelector("#result");
 let firstPlayerName;
 let secondPlayerName;
+playerChance.textContent = "Press Start!";
 
 let start = document.querySelector("#start").addEventListener("click", () => {
   firstPlayerName = prompt("Player 1 Name?");
   secondPlayerName = prompt("Player 2 Name?");
+  boxes.forEach((box) => {
+    box.addEventListener("click", playerTurn);
+  });
+  playerChance.textContent = `${firstPlayerName}'s Turn`;
 });
+
 let disableClick = () => {
-  let boxes = document.querySelectorAll(".boxes");
   boxes.forEach((box) => {
     box.removeEventListener("click", playerTurn);
   });
@@ -42,11 +50,14 @@ const playerTurn = (e) => {
     if (currentPlayer === 1) {
       targetElement.textContent = GameBoard["gameboard"][0];
       player1choice.push(targetElement.id);
+      playerChance.textContent = `${firstPlayerName}'s Turn`;
       currentPlayer = 2;
+      playerChance.textContent = `${secondPlayerName}'s Turn`;
     } else {
       targetElement.textContent = GameBoard["gameboard"][1];
       player2choice.push(targetElement.id);
       currentPlayer = 1;
+      playerChance.textContent = `${firstPlayerName}'s Turn`;
     }
     console.log("Player 1 choices:", player1choice.join(""));
     console.log("Player 2 choices:", player2choice.join(""));
@@ -56,7 +67,7 @@ const playerTurn = (e) => {
       boxTwo.textContent === "X" &&
       boxThree.textContent === "X"
     ) {
-      console.log("PlayerWin 1");
+      result.textContent = `${firstPlayerName} Won`;
       currentPlayer = 3;
       disableClick();
     } else if (
@@ -64,7 +75,7 @@ const playerTurn = (e) => {
       boxTwo.textContent === "O" &&
       boxThree.textContent === "O"
     ) {
-      console.log("PlayerWin 2");
+      result.textContent = `${secondPlayerName} Won`;
       currentPlayer = 3;
       disableClick();
     } else if (
@@ -72,7 +83,7 @@ const playerTurn = (e) => {
       boxFive.textContent === "X" &&
       boxSix.textContent === "X"
     ) {
-      console.log("PlayerWin 1");
+      result.textContent = `${firstPlayerName} Won`;
       currentPlayer = 3;
       disableClick();
     } else if (
@@ -80,7 +91,7 @@ const playerTurn = (e) => {
       boxFive.textContent === "O" &&
       boxSix.textContent === "O"
     ) {
-      console.log("PlayerWin 2");
+      result.textContent = `${secondPlayerName} Won`;
       currentPlayer = 3;
       disableClick();
     } else if (
@@ -88,7 +99,7 @@ const playerTurn = (e) => {
       boxEight.textContent === "X" &&
       boxNine.textContent === "X"
     ) {
-      console.log("PlayerWin 1");
+      result.textContent = `${firstPlayerName} Won`;
       currentPlayer = 3;
       disableClick();
     } else if (
@@ -96,7 +107,7 @@ const playerTurn = (e) => {
       boxEight.textContent === "O" &&
       boxNine.textContent === "O"
     ) {
-      console.log("PlayerWin 2");
+      result.textContent = `${secondPlayerName} Won`;
       currentPlayer = 3;
       disableClick();
     } else if (
@@ -104,7 +115,7 @@ const playerTurn = (e) => {
       boxFour.textContent === "X" &&
       boxSeven.textContent === "X"
     ) {
-      console.log("PlayerWin 1");
+      result.textContent = `${firstPlayerName} Won`;
       currentPlayer = 3;
       disableClick();
     } else if (
@@ -112,7 +123,7 @@ const playerTurn = (e) => {
       boxFour.textContent === "O" &&
       boxSeven.textContent === "O"
     ) {
-      console.log("PlayerWin 2");
+      result.textContent = `${secondPlayerName} Won`;
       currentPlayer = 3;
       disableClick();
     } else if (
@@ -120,7 +131,7 @@ const playerTurn = (e) => {
       boxFive.textContent === "X" &&
       boxEight.textContent === "X"
     ) {
-      console.log("PlayerWin 1");
+      result.textContent = `${firstPlayerName} Won`;
       currentPlayer = 3;
       disableClick();
     } else if (
@@ -128,7 +139,7 @@ const playerTurn = (e) => {
       boxFive.textContent === "O" &&
       boxEight.textContent === "O"
     ) {
-      console.log("PlayerWin 2");
+      result.textContent = `${secondPlayerName} Won`;
       currentPlayer = 3;
       disableClick();
     } else if (
@@ -136,7 +147,7 @@ const playerTurn = (e) => {
       boxSix.textContent === "X" &&
       boxNine.textContent === "X"
     ) {
-      console.log("PlayerWin 1");
+      result.textContent = `${firstPlayerName} Won`;
       currentPlayer = 3;
       disableClick();
     } else if (
@@ -144,7 +155,7 @@ const playerTurn = (e) => {
       boxSix.textContent === "O" &&
       boxNine.textContent === "O"
     ) {
-      console.log("PlayerWin 2");
+      result.textContent = `${secondPlayerName} Won`;
       currentPlayer = 3;
       disableClick();
     } else if (
@@ -152,7 +163,7 @@ const playerTurn = (e) => {
       boxFive.textContent === "X" &&
       boxSeven.textContent === "X"
     ) {
-      console.log("PlayerWin 1");
+      result.textContent = `${firstPlayerName} Won`;
       currentPlayer = 3;
       disableClick();
     } else if (
@@ -160,7 +171,7 @@ const playerTurn = (e) => {
       boxFive.textContent === "O" &&
       boxSeven.textContent === "O"
     ) {
-      console.log("PlayerWin 1");
+      result.textContent = `${secondPlayerName} Won`;
       currentPlayer = 3;
       disableClick();
     } else if (
@@ -168,7 +179,7 @@ const playerTurn = (e) => {
       boxFive.textContent === "X" &&
       boxNine.textContent === "X"
     ) {
-      console.log("PlayerWin 1");
+      result.textContent = `${firstPlayerName} Won`;
       currentPlayer = 3;
       disableClick();
     } else if (
@@ -176,7 +187,7 @@ const playerTurn = (e) => {
       boxFive.textContent === "O" &&
       boxNine.textContent === "O"
     ) {
-      console.log("PlayerWin 2");
+      result.textContent = `${secondPlayerName} Won`;
       currentPlayer = 3;
       disableClick();
     }
@@ -185,8 +196,17 @@ const playerTurn = (e) => {
 
 console.log(player1choice);
 console.log(player2choice);
-let enableClick = (function () {
-  let play = document
-    .querySelectorAll(".boxes")
-    .forEach((box) => box.addEventListener("click", playerTurn));
-})();
+
+const restart = document
+  .querySelector("#restart")
+  .addEventListener("click", () => {
+    boxes.forEach((box) => {
+      box.textContent = "";
+      player1choice = [];
+      player2choice = [];
+      currentPlayer = 1;
+      result.textContent = "";
+      playerChance.textContent = "";
+      box.addEventListener("click", playerTurn);
+    });
+  });

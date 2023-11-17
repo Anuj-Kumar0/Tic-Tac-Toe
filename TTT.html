@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="TTT.css">
-    <title>Document</title>
+    <title>Tic Tac Toe</title>
 </head>
 <body>
-    <div id="container">
+    <div id="game-buttons">
     <button id="start">Start</button>
-    
+    <button id="restart">Restart</button>
+</div>
+    <div id="container">
     <div id="ttt-container">
         <div class="trio-box">
         <div class="boxes one" id="1"></div>
@@ -27,8 +29,9 @@
         <div class="boxes nine" id="9"></div>
     </div>
     </div>
-    <button id="restart">Restart</button>
 </div>
+<div id="player-turn"></div>
+<div id="result"></div>
 <script src="TTT.js"></script>
 </body>
 </html>
