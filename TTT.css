@@ -16,6 +16,11 @@ button {
   background-color: #bef264;
   font-size: 24px;
 }
+
+button:hover {
+  border-color: #c026d3;
+  font-size: 32px;
+}
 .boxes {
   display: flex;
   justify-content: center;

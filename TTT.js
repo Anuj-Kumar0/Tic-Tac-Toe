@@ -191,6 +191,15 @@ const playerTurn = (e) => {
       currentPlayer = 3;
       disableClick();
     }
+
+    if (
+      player1choice.length + player2choice.length === 9 &&
+      result.textContent === ""
+    ) {
+      result.textContent = "It's a Draw!";
+      currentPlayer = 3;
+      disableClick();
+    }
   }
 };
 
