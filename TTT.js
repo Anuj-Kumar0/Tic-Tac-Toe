@@ -68,6 +68,7 @@ const playerTurn = (e) => {
       boxThree.textContent === "X"
     ) {
       result.textContent = `${firstPlayerName} Won`;
+      playerChance.textContent = "";
       currentPlayer = 3;
       disableClick();
     } else if (
@@ -76,6 +77,7 @@ const playerTurn = (e) => {
       boxThree.textContent === "O"
     ) {
       result.textContent = `${secondPlayerName} Won`;
+      playerChance.textContent = "";
       currentPlayer = 3;
       disableClick();
     } else if (
@@ -84,6 +86,7 @@ const playerTurn = (e) => {
       boxSix.textContent === "X"
     ) {
       result.textContent = `${firstPlayerName} Won`;
+      playerChance.textContent = "";
       currentPlayer = 3;
       disableClick();
     } else if (
@@ -92,6 +95,7 @@ const playerTurn = (e) => {
       boxSix.textContent === "O"
     ) {
       result.textContent = `${secondPlayerName} Won`;
+      playerChance.textContent = "";
       currentPlayer = 3;
       disableClick();
     } else if (
@@ -100,6 +104,7 @@ const playerTurn = (e) => {
       boxNine.textContent === "X"
     ) {
       result.textContent = `${firstPlayerName} Won`;
+      playerChance.textContent = "";
       currentPlayer = 3;
       disableClick();
     } else if (
@@ -108,6 +113,7 @@ const playerTurn = (e) => {
       boxNine.textContent === "O"
     ) {
       result.textContent = `${secondPlayerName} Won`;
+      playerChance.textContent = "";
       currentPlayer = 3;
       disableClick();
     } else if (
@@ -116,6 +122,7 @@ const playerTurn = (e) => {
       boxSeven.textContent === "X"
     ) {
       result.textContent = `${firstPlayerName} Won`;
+      playerChance.textContent = "";
       currentPlayer = 3;
       disableClick();
     } else if (
@@ -124,6 +131,7 @@ const playerTurn = (e) => {
       boxSeven.textContent === "O"
     ) {
       result.textContent = `${secondPlayerName} Won`;
+      playerChance.textContent = "";
       currentPlayer = 3;
       disableClick();
     } else if (
@@ -132,6 +140,7 @@ const playerTurn = (e) => {
       boxEight.textContent === "X"
     ) {
       result.textContent = `${firstPlayerName} Won`;
+      playerChance.textContent = "";
       currentPlayer = 3;
       disableClick();
     } else if (
@@ -140,6 +149,7 @@ const playerTurn = (e) => {
       boxEight.textContent === "O"
     ) {
       result.textContent = `${secondPlayerName} Won`;
+      playerChance.textContent = "";
       currentPlayer = 3;
       disableClick();
     } else if (
@@ -148,6 +158,7 @@ const playerTurn = (e) => {
       boxNine.textContent === "X"
     ) {
       result.textContent = `${firstPlayerName} Won`;
+      playerChance.textContent = "";
       currentPlayer = 3;
       disableClick();
     } else if (
@@ -156,6 +167,7 @@ const playerTurn = (e) => {
       boxNine.textContent === "O"
     ) {
       result.textContent = `${secondPlayerName} Won`;
+      playerChance.textContent = "";
       currentPlayer = 3;
       disableClick();
     } else if (
@@ -164,6 +176,7 @@ const playerTurn = (e) => {
       boxSeven.textContent === "X"
     ) {
       result.textContent = `${firstPlayerName} Won`;
+      playerChance.textContent = "";
       currentPlayer = 3;
       disableClick();
     } else if (
@@ -172,6 +185,7 @@ const playerTurn = (e) => {
       boxSeven.textContent === "O"
     ) {
       result.textContent = `${secondPlayerName} Won`;
+      playerChance.textContent = "";
       currentPlayer = 3;
       disableClick();
     } else if (
@@ -180,6 +194,7 @@ const playerTurn = (e) => {
       boxNine.textContent === "X"
     ) {
       result.textContent = `${firstPlayerName} Won`;
+      playerChance.textContent = "";
       currentPlayer = 3;
       disableClick();
     } else if (
@@ -188,6 +203,7 @@ const playerTurn = (e) => {
       boxNine.textContent === "O"
     ) {
       result.textContent = `${secondPlayerName} Won`;
+      playerChance.textContent = "";
       currentPlayer = 3;
       disableClick();
     }
@@ -215,7 +231,7 @@ const restart = document
       player2choice = [];
       currentPlayer = 1;
       result.textContent = "";
-      playerChance.textContent = "";
+      playerChance.textContent = `${firstPlayerName}'s Turn`;
       box.addEventListener("click", playerTurn);
     });
   });
