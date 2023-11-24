@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+</head>
+<body>
+    <div id="game-buttons">
+    <button id="start">Start</button>
+    <button id="restart">Restart</button>
+</div>
+    <div id="container">
+    <div id="ttt-container">
+        <div class="trio-box">
+        <div class="boxes one" id="1"></div>
+        <div class="boxes two" id="2"></div>
+        <div class="boxes three" id="3"></div>
+    </div>
+        <div class="trio-box">
+        <div class="boxes four" id="4"></div>
+        <div class="boxes five" id="5"></div>
+        <div class="boxes six" id="6"></div>
+    </div>
+        <div class="trio-box">
+        <div class="boxes seven" id="7"></div>
+        <div class="boxes eight" id="8"></div>
+        <div class="boxes nine" id="9"></div>
+    </div>
+    </div>
+</div>
+<div id="player-turn"></div>
+<div id="result"></div>
+<style>
+    html {
+  background-color: #cbd5e1;
+  margin: 0;
+  padding: 0;
+}
+.boxes {
+  height: 8vh;
+  width: 5vw;
+  border: 3px solid rgb(92, 84, 84);
+}
+button {
+  height: 120px;
+  width: 160px;
+  border: 3px solid black;
+  font-weight: 600;
+  background-color: #bef264;
+  font-size: 24px;
+}
+
+button:hover {
+  border-color: #c026d3;
+  font-size: 32px;
+}
+.boxes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 48px;
+  background-color: azure;
+}
+
+.trio-box {
+  display: flex;
+}
+#container {
+  height: 26vh;
+  width: 100vw;
+  display: grid;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+#game-buttons {
+  display: flex;
+  height: 300px;
+  justify-content: space-evenly;
+  align-items: center;
+}
+#player-turn {
+  background-color: #d6d3d1;
+  width: 100vw;
+  display: grid;
+  font-size: 48px;
+  font-weight: 600;
+  height: 20vh;
+  justify-content: center;
+  align-items: center;
+}
+#result {
+  background-color: #fed7aa;
+  width: 100vw;
+  display: grid;
+  font-size: 48px;
+  font-weight: 600;
+  height: 19vh;
+  justify-content: center;
+  align-items: center;
+}
+
+</style>
+<script>
+    let boxOne = document.querySelector(".one");
+let boxTwo = document.querySelector(".two");
+let boxThree = document.querySelector(".three");
+let boxFour = document.querySelector(".four");
+let boxFive = document.querySelector(".five");
+let boxSix = document.querySelector(".six");
+let boxSeven = document.querySelector(".seven");
+let boxEight = document.querySelector(".eight");
+let boxNine = document.querySelector(".nine");
+let boxes = document.querySelectorAll(".boxes");
+const playerChance = document.querySelector("#player-turn");
+const result = document.querySelector("#result");
+let firstPlayerName;
+let secondPlayerName;
+playerChance.textContent = "Press Start!";
+
+let start = document.querySelector("#start").addEventListener("click", () => {
+  firstPlayerName = prompt("Player 1 Name?");
+  secondPlayerName = prompt("Player 2 Name?");
+  boxes.forEach((box) => {
+    box.addEventListener("click", playerTurn);
+  });
+  playerChance.textContent = `${firstPlayerName}'s Turn`;
+});
+
+let disableClick = () => {
+  boxes.forEach((box) => {
+    box.removeEventListener("click", playerTurn);
+  });
+};
+
+let GameBoard = {
+  gameboard: ["X", "O"],
+  player1: {
+    name: firstPlayerName,
+  },
+  player2: {
+    name: secondPlayerName,
+  },
+};
+
+let player1choice = [];
+let player2choice = [];
+let currentPlayer = 1;
+
+const playerTurn = (e) => {
+  let targetElement = e.target;
+
+  if (targetElement.textContent === "") {
+    if (currentPlayer === 1) {
+      targetElement.textContent = GameBoard["gameboard"][0];
+      player1choice.push(targetElement.id);
+      playerChance.textContent = `${firstPlayerName}'s Turn`;
+      currentPlayer = 2;
+      playerChance.textContent = `${secondPlayerName}'s Turn`;
+    } else {
+      targetElement.textContent = GameBoard["gameboard"][1];
+      player2choice.push(targetElement.id);
+      currentPlayer = 1;
+      playerChance.textContent = `${firstPlayerName}'s Turn`;
+    }
+    console.log("Player 1 choices:", player1choice.join(""));
+    console.log("Player 2 choices:", player2choice.join(""));
+
+    if (
+      boxOne.textContent === "X" &&
+      boxTwo.textContent === "X" &&
+      boxThree.textContent === "X"
+    ) {
+      result.textContent = `${firstPlayerName} Won`;
+      playerChance.textContent = "";
+      currentPlayer = 3;
+      disableClick();
+    } else if (
+      boxOne.textContent === "O" &&
+      boxTwo.textContent === "O" &&
+      boxThree.textContent === "O"
+    ) {
+      result.textContent = `${secondPlayerName} Won`;
+      playerChance.textContent = "";
+      currentPlayer = 3;
+      disableClick();
+    } else if (
+      boxFour.textContent === "X" &&
+      boxFive.textContent === "X" &&
+      boxSix.textContent === "X"
+    ) {
+      result.textContent = `${firstPlayerName} Won`;
+      playerChance.textContent = "";
+      currentPlayer = 3;
+      disableClick();
+    } else if (
+      boxFour.textContent === "O" &&
+      boxFive.textContent === "O" &&
+      boxSix.textContent === "O"
+    ) {
+      result.textContent = `${secondPlayerName} Won`;
+      playerChance.textContent = "";
+      currentPlayer = 3;
+      disableClick();
+    } else if (
+      boxSeven.textContent === "X" &&
+      boxEight.textContent === "X" &&
+      boxNine.textContent === "X"
+    ) {
+      result.textContent = `${firstPlayerName} Won`;
+      playerChance.textContent = "";
+      currentPlayer = 3;
+      disableClick();
+    } else if (
+      boxSeven.textContent === "O" &&
+      boxEight.textContent === "O" &&
+      boxNine.textContent === "O"
+    ) {
+      result.textContent = `${secondPlayerName} Won`;
+      playerChance.textContent = "";
+      currentPlayer = 3;
+      disableClick();
+    } else if (
+      boxOne.textContent === "X" &&
+      boxFour.textContent === "X" &&
+      boxSeven.textContent === "X"
+    ) {
+      result.textContent = `${firstPlayerName} Won`;
+      playerChance.textContent = "";
+      currentPlayer = 3;
+      disableClick();
+    } else if (
+      boxOne.textContent === "O" &&
+      boxFour.textContent === "O" &&
+      boxSeven.textContent === "O"
+    ) {
+      result.textContent = `${secondPlayerName} Won`;
+      playerChance.textContent = "";
+      currentPlayer = 3;
+      disableClick();
+    } else if (
+      boxTwo.textContent === "X" &&
+      boxFive.textContent === "X" &&
+      boxEight.textContent === "X"
+    ) {
+      result.textContent = `${firstPlayerName} Won`;
+      playerChance.textContent = "";
+      currentPlayer = 3;
+      disableClick();
+    } else if (
+      boxTwo.textContent === "O" &&
+      boxFive.textContent === "O" &&
+      boxEight.textContent === "O"
+    ) {
+      result.textContent = `${secondPlayerName} Won`;
+      playerChance.textContent = "";
+      currentPlayer = 3;
+      disableClick();
+    } else if (
+      boxThree.textContent === "X" &&
+      boxSix.textContent === "X" &&
+      boxNine.textContent === "X"
+    ) {
+      result.textContent = `${firstPlayerName} Won`;
+      playerChance.textContent = "";
+      currentPlayer = 3;
+      disableClick();
+    } else if (
+      boxThree.textContent === "O" &&
+      boxSix.textContent === "O" &&
+      boxNine.textContent === "O"
+    ) {
+      result.textContent = `${secondPlayerName} Won`;
+      playerChance.textContent = "";
+      currentPlayer = 3;
+      disableClick();
+    } else if (
+      boxThree.textContent === "X" &&
+      boxFive.textContent === "X" &&
+      boxSeven.textContent === "X"
+    ) {
+      result.textContent = `${firstPlayerName} Won`;
+      playerChance.textContent = "";
+      currentPlayer = 3;
+      disableClick();
+    } else if (
+      boxThree.textContent === "O" &&
+      boxFive.textContent === "O" &&
+      boxSeven.textContent === "O"
+    ) {
+      result.textContent = `${secondPlayerName} Won`;
+      playerChance.textContent = "";
+      currentPlayer = 3;
+      disableClick();
+    } else if (
+      boxOne.textContent === "X" &&
+      boxFive.textContent === "X" &&
+      boxNine.textContent === "X"
+    ) {
+      result.textContent = `${firstPlayerName} Won`;
+      playerChance.textContent = "";
+      currentPlayer = 3;
+      disableClick();
+    } else if (
+      boxOne.textContent === "O" &&
+      boxFive.textContent === "O" &&
+      boxNine.textContent === "O"
+    ) {
+      result.textContent = `${secondPlayerName} Won`;
+      playerChance.textContent = "";
+      currentPlayer = 3;
+      disableClick();
+    }
+
+    if (
+      player1choice.length + player2choice.length === 9 &&
+      result.textContent === ""
+    ) {
+      result.textContent = "It's a Draw!";
+      currentPlayer = 3;
+      disableClick();
+    }
+  }
+};
+
+console.log(player1choice);
+console.log(player2choice);
+
+const restart = document
+  .querySelector("#restart")
+  .addEventListener("click", () => {
+    boxes.forEach((box) => {
+      box.textContent = "";
+      player1choice = [];
+      player2choice = [];
+      currentPlayer = 1;
+      result.textContent = "";
+      playerChance.textContent = `${firstPlayerName}'s Turn`;
+      box.addEventListener("click", playerTurn);
+    });
+  });
+
+</script>
+</body>
+</html>
